@@ -367,4 +367,21 @@
     return nil;
 }
 
+- (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger rowIndex, NSUInteger columnIndex, BOOL *stop))block;
+{
+    BOOL stop = NO;
+    NSArray* rows = self.rows;
+    NSUInteger i=0;
+    for (NSArray* row in rows) {
+        NSUInteger j=0;
+        for (id columnObject in row) {
+            block(columnObject, i, j, &stop);
+            if (stop)  break;
+            j++;
+        }
+        i++;
+    }
+}
+
+
 @end

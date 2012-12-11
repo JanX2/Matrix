@@ -97,6 +97,9 @@ typedef id(^FSMatrixInitializer)(NSUInteger row, NSUInteger column);
  */
 - (id)objectAtRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)column;
 
+/** Walk over all entries in the matrix and pass each value and position to a block. */
+- (void)enumerateObjectsUsingBlock:(void (^)(id obj, NSUInteger rowIndex, NSUInteger columnIndex, BOOL *stop))block;
+
 @end
 
 /**

@@ -59,6 +59,22 @@ int main (int argc, const char * argv[])
                             newColumn:NO];
         NSLog(@"Insertion Example #2: %@", mutationExample);
         
+        NSMutableString *enumerationString = [NSMutableString string];
+        NSUInteger lastColumnIndex = mutationExample.columnCount - 1;
+        NSUInteger padToLength = 20;
+        [mutationExample enumerateObjectsUsingBlock:^(id obj, NSUInteger rowIndex, NSUInteger columnIndex, BOOL *stop) {
+            [enumerationString appendString:@" | "];
+            NSString *description = [obj description];
+            description = [description stringByPaddingToLength:padToLength
+                                                    withString:@" "
+                                               startingAtIndex:0];
+            [enumerationString appendString:description];
+            if (columnIndex == lastColumnIndex) {
+                [enumerationString appendString:@" |\n"];
+            }
+        }];
+        NSLog(@"Enumeration Example: \n%@", enumerationString);
+
     }
     
     return 0;
