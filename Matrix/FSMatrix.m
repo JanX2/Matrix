@@ -81,7 +81,7 @@
     for (NSUInteger i=0;
          i<_rowCount;
          ++i) {
-        NSMutableArray* row = [rows objectAtIndex:i];
+        NSMutableArray* row = rows[i];
         for (NSUInteger j=[row count];
              j<_columnCount;
              ++j)
@@ -134,7 +134,7 @@
         for (NSUInteger i=0;
              i<_rowCount;
              ++i)
-            [deepCopyArray addObject:[[[_matrix rows] objectAtIndex:i] copy]]; // immutable copy
+            [deepCopyArray addObject:[[_matrix rows][i] copy]]; // immutable copy
         _rows = [deepCopyArray copy]; // immutable copy
     } else {
         // iterate over the thing the slow way
@@ -203,7 +203,7 @@
 
 - (instancetype)objectAtRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex
 {
-    return [[_rows objectAtIndex:rowIndex] objectAtIndex:columnIndex];
+    return _rows[rowIndex][columnIndex];
 }
 
 - (instancetype)copy

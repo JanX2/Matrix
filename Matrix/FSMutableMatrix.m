@@ -50,7 +50,7 @@
         for (NSUInteger i=0; // perform a
              i<_rowCount;        // deep copy
              ++i)
-            [_rows addObject:[[_matrix->_rows objectAtIndex:i] mutableCopy]];
+            [_rows addObject:[_matrix->_rows[i] mutableCopy]];
     } else {
         // really not optimized initializer
         _rowCount = [matrix rowCount];
@@ -124,7 +124,7 @@
     for (NSUInteger i=0;
          i<_rowCount;
          ++i) {
-        NSMutableArray* row = [_rows objectAtIndex:i];
+        NSMutableArray* row = _rows[i];
         for (NSUInteger j=[row count];
              j<_columnCount;
              ++j)
@@ -203,7 +203,7 @@
 
 - (instancetype)objectAtRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex
 {
-    return [[_rows objectAtIndex:rowIndex] objectAtIndex:columnIndex];
+    return _rows[rowIndex][columnIndex];
 }
 
 - (void)setObject:(id)anObject atRowIndex:(NSUInteger)rowIndex columnIndex:(NSUInteger)columnIndex
@@ -217,7 +217,7 @@
     if (anObject == nil)
         anObject = _defaultInitializer(rowIndex, columnIndex);
 
-    [[_rows objectAtIndex:rowIndex] replaceObjectAtIndex:columnIndex withObject:anObject];
+    _rows[rowIndex][columnIndex] = anObject;
 }
 
 - (void)insertObject:(id)anObject atRowIndex:(NSUInteger)rowIndex newRow:(BOOL)newRow columnIndex:(NSUInteger)columnIndex newColumn:(BOOL)newColumn;
@@ -290,7 +290,7 @@
         for (NSUInteger j=0;
              j<_rowCount;
              ++j) {
-            NSMutableArray* row = [_rows objectAtIndex:j];
+            NSMutableArray* row = _rows[j];
             for (NSUInteger k=0;
                  k<i;
                  ++k)
