@@ -25,12 +25,12 @@
     return self;
 }
 
-- (instancetype)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt
+- (instancetype)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt
 {
     return [self initWithRows:rows count:cnt initializer:FSNullInitializer];
 }
 
-- (instancetype)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer;
+- (instancetype)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer;
 {
     self = [super init];
     if (!self) return nil;
@@ -266,13 +266,13 @@
     return [super init];
 }
 
-- (instancetype)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt
+- (instancetype)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt
 {
     [NSException raise:kVirtualMethodCalledException format:kVirtualMethodCalledExceptionDetail];
     return nil;
 }
 
-- (instancetype)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer
+- (instancetype)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer
 {
     [NSException raise:kVirtualMethodCalledException format:kVirtualMethodCalledExceptionDetail];
     return nil;

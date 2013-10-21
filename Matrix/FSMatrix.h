@@ -56,12 +56,12 @@ typedef id(^FSMatrixInitializer)(NSUInteger row, NSUInteger column);
 /**
  * Same as a call to `initWithRows:count:initializer:` where initializer is `FSNullInitializer`.
  */
-- (id)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt;
+- (id)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt;
 
 /**
  * Creates a new matrix using a (c) array of arrays that is `count` long. `initializer` is used to initalize any potential missing columns in the arrays to an object of your choice.
  */
-- (id)initWithRows:(const NSArray* [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer;
+- (id)initWithRows:(const NSArray* __unsafe_unretained [])rows count:(NSUInteger)cnt initializer:(FSMatrixInitializer)defaultInitializer;
 
 /**
  * Same as a call to `initWithInitializer:rows:` where `initializer` is `FSNullInitializer`.
